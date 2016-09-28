@@ -34,6 +34,29 @@ class HelloMessage extends React.Component {
 ReactDOM.render(<HelloMessage name="Sebastian" />, mountNode);
 ```
 
+### Connecting Component to Redux Store
+```
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actionCreators from '../actions/actionCreators';
+
+class Component extends React.Component {
+
+}
+
+function mapStateToProps(state){
+  return {
+    organizations: state.organizations
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(actionCreators, dispatch);
+}
+
+export default connect(mapStateToProps , mapDispatchToProps)(Component);
+```
+
 ## Mixins
 ES6 classes do not support mixins and neither do we. [Dan Abramov on mixins in React](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.ecm9uuewt)
 
